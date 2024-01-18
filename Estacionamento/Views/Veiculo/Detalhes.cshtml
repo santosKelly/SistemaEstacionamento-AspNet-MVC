@@ -1,0 +1,39 @@
+﻿@model Estacionamento.Models.Veiculo
+
+@{
+    ViewData["Title"] = "Detalhes dos veículos cadastrados.";
+}
+
+<h2> Detalhes do veículo</h2>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(x => x.Modelo)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayFor(x => x.Modelo)
+        </dt>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(x => x.Placa)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayFor(x => x.Placa)
+        </dt>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(x => x.PrecoInicial)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayFor(x => x.PrecoInicial)
+        </dt>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(x => x.PrecoHora)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayFor(x => x.PrecoHora)
+        </dt>
+    </dl>
+</div>
+
+<a asp-action="Editar" asp-route-id="@Model.Id">Editar</a>
+<a asp-action="Index">Voltar</a>

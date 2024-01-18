@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Estacionamento.Models.Veiculo>
+
+@{
+    ViewData["Title"] = "Lista de veículos estacionados";
+}
+
+<h2>Sistema de Estacionamento</h2>
+
+<p>
+    <a asp-action="Criar">Cadastrar veículo</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Modelo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Placa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecoInicial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecoHora)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Modelo)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Placa)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.PrecoInicial)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.PrecoHora)
+                </td>
+                <td>
+
+
+                    <div style="display: inline-block">
+                        <a asp-action="Editar" asp-route-id="@item.Id">Editar</a> |
+                        <a asp-action="Detalhes" asp-route-id="@item.Id">Detalhes</a> |
+                        </div>
+
+                        <form asp-action="Deletar" asp-route-id="@item.Id" method="Get" >
+                            <input type="hidden" id="horasEstacionado" name="horasEstacionado" />
+                            <button type="submit" value="Deletar" onclick="return confirmarRemocao()" class="btn btn-link" style="display: inline-block">Deletar</button>
+
+                        </form>
+
+                </td>
+            </tr>
+        }
+
+
+
+    </tbody>
+</table>
+
+
+<script>
+    function confirmarRemocao() {
+        var horasEstacionado = prompt("Quantas horas o veículo ficou estacionado?");
+        if (horasEstacionado === null || horasEstacionado === "") {
+            return false; // Cancelar a remoção se o usuário não fornecer horas.
+        }
+
+        document.getElementById("horasEstacionado").value = horasEstacionado;
+
+        
+        return confirm("Deseja remover o veículo?");
+    }
+</script>

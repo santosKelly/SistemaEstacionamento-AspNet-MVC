@@ -1,0 +1,61 @@
+﻿@model Estacionamento.Models.Veiculo
+
+@{
+    ViewData["Title"] = "Editar veículo";
+}
+
+<h1> Editar veículo</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Editar">
+            <div class="form-group">
+                <label asp-for="Modelo" class="control-label"></label>
+                <input asp-for="Modelo" class="form-control" />
+                <span asp-validation-for="Modelo" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Placa" class="control-label"></label>
+                <input asp-for="Placa" class="form-control" />
+                <span asp-validation-for="Placa" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="PrecoInicial" class="control-label"></label>
+                <input asp-for="PrecoInicial" class="form-control" />
+                <span asp-validation-for="PrecoInicial" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="PrecoHora" class="control-label"></label>
+                <input asp-for="PrecoHora" class="form-control" />
+                <span asp-validation-for="PrecoHora" class="text-danger"></span>
+
+            </div>
+
+            <br>
+            <div class="form-group">
+@*                <input type="submit" value="Editar" class="btn btn-primary" />
+*@                <input type="submit" value="Editar" class="btn btn-primary" onclick="return confirmarAlteracao()" />
+
+            </div>
+        </form>
+    </div>
+</div>
+<hr />
+<br>
+
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>
+
+<script>
+    function confirmarAlteracao() {
+        var resposta = confirm("Deseja salvar as alterações feitas ?");
+        return resposta;
+    }
+</script>
+
