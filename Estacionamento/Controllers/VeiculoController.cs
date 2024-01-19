@@ -24,19 +24,26 @@ namespace Estacionamento.Controllers
             return View();
         }
 
+
         [HttpPost]
         public IActionResult Criar(Veiculo veiculo)
         {
             if (ModelState.IsValid)
             {
-                _context.Veiculos.Add(veiculo);
-                _context.SaveChanges();
-
-                return RedirectToAction(nameof(Index));
+                var placaExists = _context.Veiculos.Any(x => x.Placa == veiculo.Placa);
+                if (placaExists)
+                {
+                    ModelState.AddModelError($"Placa","Essa placa já se encontra cadastrada");
+                }
+                else
+                {
+                    _context.Veiculos.Add(veiculo);
+                    _context.SaveChanges();
+                    return RedirectToAction(nameof(Index));
+                }
             }
 
-            return View(veiculo);
-
+            return View(veiculo); 
         }
 
         public IActionResult Editar(int id)
@@ -55,17 +62,34 @@ namespace Estacionamento.Controllers
         {
             if (ModelState.IsValid)
             {
-                var veiculoBanco = _context.Veiculos.Find(veiculo.Id);
+                var placaExists = _context.Veiculos.Any(x => x.Placa == veiculo.Placa && x.Id != veiculo.Id);
 
-                veiculoBanco.Modelo = veiculo.Modelo;
-                veiculoBanco.Placa = veiculo.Placa;
-                veiculoBanco.PrecoInicial = veiculo.PrecoInicial;
-                veiculoBanco.PrecoHora = veiculo.PrecoHora;
+                if (placaExists)
+                {
+                    ModelState.AddModelError($"Placa", "Essa placa já se encontra cadastrada");
+                }
+                else
+                {
+                    var veiculoBanco = _context.Veiculos.Find(veiculo.Id);
 
-                _context.Veiculos.Update(veiculoBanco);
-                _context.SaveChanges();
+                    if (veiculoBanco != null)
+                    {
+                        veiculoBanco.Modelo = veiculo.Modelo;
+                        veiculoBanco.Placa = veiculo.Placa;
+                        veiculoBanco.PrecoInicial = veiculo.PrecoInicial;
+                        veiculoBanco.PrecoHora = veiculo.PrecoHora;
 
-                return RedirectToAction(nameof(Index));
+                        _context.Veiculos.Update(veiculoBanco);
+                        _context.SaveChanges();
+
+                        return RedirectToAction(nameof(Index));
+                    }
+                    else
+                    {
+                        return NotFound(); // Ou outra lógica apropriada para lidar com veículo não encontrado
+                    }
+                }
+ 
             }
 
             return View(veiculo);   
@@ -84,12 +108,11 @@ namespace Estacionamento.Controllers
         public IActionResult Deletar(int id, int horasEstacionado)
         {
             var deletarVeiculo = _context.Veiculos.Find(id);
-            //if (deletar == null)
-            //return RedirectToAction(nameof(Index));
+
 
             decimal totalHoras = CalcularValorTotalHora(deletarVeiculo, horasEstacionado);
 
-            TempData["MensagemRemocao"] = $"O valor cobrado é de: {totalHoras:C}";
+            TempData["MensagemRemocao"] = $"O valor total cobrado é de : {totalHoras:C}";
 
 
             return View(deletarVeiculo);
@@ -112,7 +135,6 @@ namespace Estacionamento.Controllers
 
         private decimal CalcularValorTotalHora(Veiculo veiculo, int horasEstacionado)
         {
-            // Ajuste esta lógica de cálculo com base nos seus requisitos
             decimal valorTotal = (veiculo.PrecoHora * horasEstacionado) + veiculo.PrecoInicial ;
             return valorTotal;
         }

@@ -51,15 +51,12 @@
                 </td>
                 <td>
 
-
-                    <div style="display: inline-block">
                         <a asp-action="Editar" asp-route-id="@item.Id">Editar</a> |
                         <a asp-action="Detalhes" asp-route-id="@item.Id">Detalhes</a> |
-                        </div>
 
-                        <form asp-action="Deletar" asp-route-id="@item.Id" method="Get" >
+                        <form asp-action="Deletar" asp-route-id="@item.Id" method="get" >
                             <input type="hidden" id="horasEstacionado" name="horasEstacionado" />
-                            <button type="submit" value="Deletar" onclick="return confirmarRemocao()" class="btn btn-link" style="display: inline-block">Deletar</button>
+                            <button type="submit" value="Deletar" onclick="return confirmarRemocao()" class="btn btn-link">Deletar</button>
 
                         </form>
 
@@ -77,12 +74,21 @@
     function confirmarRemocao() {
         var horasEstacionado = prompt("Quantas horas o veículo ficou estacionado?");
         if (horasEstacionado === null || horasEstacionado === "") {
-            return false; // Cancelar a remoção se o usuário não fornecer horas.
+            return false; 
         }
 
         document.getElementById("horasEstacionado").value = horasEstacionado;
+
+
 
         
         return confirm("Deseja remover o veículo?");
     }
 </script>
+
+
+
+
+
+
+
