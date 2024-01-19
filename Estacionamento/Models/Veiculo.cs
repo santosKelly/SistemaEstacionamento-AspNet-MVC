@@ -20,5 +20,9 @@ namespace Estacionamento.Models
 
         [Required, Display(Name = "Preço por hora")]
         public decimal PrecoHora { get; set; }
+        //public string Marca { get; set; }
+        //public string Cor { get; set; }
+        //public string proprietário { get; set; }
+        
     }
 }

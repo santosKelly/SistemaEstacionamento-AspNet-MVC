@@ -1,39 +1,39 @@
 ﻿@model Estacionamento.Models.Veiculo
 
 @{
-    ViewData["Title"] = "Detalhes dos veículos cadastrados.";
+    ViewData["Title"] = "Detalhes dos veículos.";
 }
 
-<h2> Detalhes do veículo</h2>
+<h2 style="font-style: italic; text-decoration: underline; color: #4F4F4F">Detalhes do veículo</h2>
 
 <div>
     <dl class="row">
-        <dt class="col-sm-2">
+        <dt class="col-sm-2" style="font-family:sans-serif;color:#4F4F4F">
             @Html.DisplayNameFor(x => x.Modelo)
         </dt>
-        <dt class="col-sm-10">
+        <dt class="col-sm-10" style="font-family:serif;color:#808080">
             @Html.DisplayFor(x => x.Modelo)
         </dt>
-        <dt class="col-sm-2">
+        <dt class="col-sm-2" style="font-family:sans-serif;color:#4F4F4F">
             @Html.DisplayNameFor(x => x.Placa)
         </dt>
-        <dt class="col-sm-10">
+        <dt class="col-sm-10" style="font-family:serif;color:#808080">
             @Html.DisplayFor(x => x.Placa)
         </dt>
-        <dt class="col-sm-2">
+        <dt class="col-sm-2" style="font-family:sans-serif;color:#4F4F4F">
             @Html.DisplayNameFor(x => x.PrecoInicial)
         </dt>
-        <dt class="col-sm-10">
+        <dt class="col-sm-10" style="font-family:serif;color:#808080">
             @Html.DisplayFor(x => x.PrecoInicial)
         </dt>
-        <dt class="col-sm-2">
+        <dt class="col-sm-2" style="font-family:sans-serif;color:#4F4F4F">
             @Html.DisplayNameFor(x => x.PrecoHora)
         </dt>
-        <dt class="col-sm-10">
+        <dt class="col-sm-10" style="font-family:serif;color:#808080">
             @Html.DisplayFor(x => x.PrecoHora)
         </dt>
     </dl>
 </div>
 
-<a asp-action="Editar" asp-route-id="@Model.Id">Editar</a>
+<a asp-action="Editar" asp-route-id="@Model.Id">Editar</a> |
 <a asp-action="Index">Voltar</a>

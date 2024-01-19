@@ -86,7 +86,7 @@ namespace Estacionamento.Controllers
                     }
                     else
                     {
-                        return NotFound(); // Ou outra lógica apropriada para lidar com veículo não encontrado
+                        return NotFound(); 
                     }
                 }
  
@@ -112,7 +112,7 @@ namespace Estacionamento.Controllers
 
             decimal totalHoras = CalcularValorTotalHora(deletarVeiculo, horasEstacionado);
 
-            TempData["MensagemRemocao"] = $"O valor total cobrado é de : {totalHoras:C}";
+            TempData["MensagemRemocao"] = $"O total cobrado é de  : {totalHoras:C}, por {horasEstacionado} hora(s) estacionado";
 
 
             return View(deletarVeiculo);
