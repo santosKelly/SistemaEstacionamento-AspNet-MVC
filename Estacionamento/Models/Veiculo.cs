@@ -11,8 +11,9 @@ namespace Estacionamento.Models
         public string Modelo { get; set; }
 
         [Required, Display(Name = "Placa")]
-        [StringLength(7, ErrorMessage = "A placa deve ter no máximo 7 caracteres, composto de letras e números.")]
-        [RegularExpression("^[A-Za-z0-9-]*$", ErrorMessage = "A placa só pode conter letras e números")]
+        [MaxLength(7, ErrorMessage = "A placa deve ter no máximo 7 caracteres, composto de letras e números.")]
+        [MinLength(7, ErrorMessage = "A placa deve ter no mínimo 7 caracteres, composto de letras e números.")]
+        [RegularExpression("^[A-Za-z0-9]*$", ErrorMessage = "A placa só pode conter letras e números")]
         public string Placa { get; set; }
 
         [Display(Name ="Preço Inicial")]
