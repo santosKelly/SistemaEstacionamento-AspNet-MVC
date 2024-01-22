@@ -17,7 +17,10 @@ namespace Estacionamento.Migrations
                     Modelo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Placa = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PrecoInicial = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    PrecoHora = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    PrecoHora = table.Column<string>(type: "decimal(18,2)", nullable: false),
+                    Cor = table.Column<string>(nullable: false),
+                    Marca = table.Column<string>(nullable: false),
+                    Proprietario = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {

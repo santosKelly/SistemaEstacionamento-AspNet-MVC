@@ -4,7 +4,7 @@
     ViewData["Title"] = "Lista de veículos estacionados";
 }
 
-<h2>Sistema de Estacionamento</h2>
+<h2 style="color:orangered">Sistema de Estacionamento</h2>
 
 <p>
     <a asp-action="Criar">Cadastrar veículo</a>
@@ -12,16 +12,13 @@
 
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
+        <tr style="color:orangered">
             <th>
                 @Html.DisplayNameFor(model => model.Modelo)
             </th>
-            <th>
+@*            <th>
                 @Html.DisplayNameFor(model => model.Placa)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.PrecoInicial)
             </th>
@@ -35,14 +32,11 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(model => item.Id)
-                </td>
-                <td>
                     @Html.DisplayFor(model => item.Modelo)
                 </td>
-                <td>
+@*                <td>
                     @Html.DisplayFor(model => item.Placa)
-                </td>
+                </td>*@
                 <td>
                     @Html.DisplayFor(model => item.PrecoInicial)
                 </td>
@@ -51,14 +45,13 @@
                 </td>
                 <td>
 
-                    
-
-                        <form asp-action="Deletar" asp-route-id="@item.Id" method="get" >
-                         <input type="hidden" id="horasEstacionado" name="horasEstacionado" />
-                         <a asp-action="Editar" asp-route-id="@item.Id">Editar</a> | <a asp-action="Detalhes" asp-route-id="@item.Id">Detalhes</a> |<button type="submit" value="Deletar" onclick="return confirmarRemocao()" class="btn btn-link">Deletar</button>
-
-                        </form>
-
+                    <form asp-action="Deletar" asp-route-id="@item.Id" method="get">
+                       <label for="horasEstacionado">Horas Estacionado:</label>
+                        <input type="text" id="horasEstacionado" name="horasEstacionado" style="width: 100px;" />
+                        <a asp-action="Editar" asp-route-id="@item.Id">Editar</a> |
+                        <a asp-action="Detalhes" asp-route-id="@item.Id">Detalhes</a> |
+                        <button type="submit" onclick="return confirmarRemocao('@item.Id')" class="btn btn-link">Deletar</button>
+                    </form>
                 </td>
             </tr>
         }
@@ -70,18 +63,14 @@
 
 
 <script>
-    function confirmarRemocao() {
-        var horasEstacionado = prompt("Por quantas horas o veículo ficou estacionado?");
-        if (horasEstacionado === null || horasEstacionado === "") {
-            return false; 
+    function confirmarRemocao(id) {
+        if (confirm("Deseja realmente remover o veículo?")) {
+            var url = "@Url.Action("Deletar", "Veiculo")/" + id;
+            console.log(url);
+            window.location.replace(url);
+        } else {
+            return false;
         }
-
-        document.getElementById("horasEstacionado").value = horasEstacionado;
-
-
-
-        
-        return confirm("Deseja realmente remover o veículo?");
     }
 </script>
 

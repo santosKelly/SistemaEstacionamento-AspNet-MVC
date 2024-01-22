@@ -15,14 +15,20 @@ namespace Estacionamento.Models
         [RegularExpression("^[A-Za-z0-9-]*$", ErrorMessage = "A placa só pode conter letras e números")]
         public string Placa { get; set; }
 
-        [Required, Display(Name = "Preço Inicial")]
+        [Display(Name ="Preço Inicial")]
         public decimal PrecoInicial { get; set; }
 
         [Required, Display(Name = "Preço por hora")]
         public decimal PrecoHora { get; set; }
-        //public string Marca { get; set; }
-        //public string Cor { get; set; }
-        //public string proprietário { get; set; }
-        
+
+        [Required, Display(Name = "Marca")]
+        public string Marca { get; set; }
+
+        [Required, Display(Name = "Cor")]
+        public string Cor { get; set; }
+
+        [Required, Display(Name = "Proprietário")]
+        public string Proprietario { get; set; }
+
     }
 }

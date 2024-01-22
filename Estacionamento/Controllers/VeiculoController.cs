@@ -78,6 +78,9 @@ namespace Estacionamento.Controllers
                         veiculoBanco.Placa = veiculo.Placa;
                         veiculoBanco.PrecoInicial = veiculo.PrecoInicial;
                         veiculoBanco.PrecoHora = veiculo.PrecoHora;
+                        veiculoBanco.Cor = veiculo.Cor;
+                        veiculoBanco.Marca = veiculo.Marca;
+                        veiculoBanco.Proprietario = veiculo.Proprietario;
 
                         _context.Veiculos.Update(veiculoBanco);
                         _context.SaveChanges();
@@ -107,26 +110,29 @@ namespace Estacionamento.Controllers
 
         public IActionResult Deletar(int id, int horasEstacionado)
         {
+            TempData.Clear();  
+
             var deletarVeiculo = _context.Veiculos.Find(id);
 
 
             decimal totalHoras = CalcularValorTotalHora(deletarVeiculo, horasEstacionado);
 
             TempData["MensagemRemocao"] = $"O total cobrado é de  : {totalHoras:C}, por {horasEstacionado} hora(s) estacionado";
-
+            
 
             return View(deletarVeiculo);
         }
+
 
         [HttpPost]
         public IActionResult Deletar(Veiculo veiculo)
         {
 
-                var veiculoBanco = _context.Veiculos.Find(veiculo.Id);
+            var veiculoBanco = _context.Veiculos.Find(veiculo.Id);
 
 
-                _context.Veiculos.Remove(veiculoBanco);
-                _context.SaveChanges();
+            _context.Veiculos.Remove(veiculoBanco);
+            _context.SaveChanges();
 
 
 

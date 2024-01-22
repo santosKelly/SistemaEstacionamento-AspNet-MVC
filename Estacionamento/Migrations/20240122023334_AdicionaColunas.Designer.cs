@@ -3,6 +3,7 @@ using Estacionamento.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Estacionamento.Migrations
 {
     [DbContext(typeof(EstacionamentoContext))]
-    partial class EstacionamentoContextModelSnapshot : ModelSnapshot
+    [Migration("20240122023334_AdicionaColunas")]
+    partial class AdicionaColunas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,7 +55,7 @@ namespace Estacionamento.Migrations
                     b.Property<decimal>("PrecoInicial")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("Proprietario")
+                    b.Property<string>("proprietário")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

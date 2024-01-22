@@ -1,18 +1,47 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    font-family: "Segoe UI", Helvetica, Arial, sans-serif;
 }
+
+.navbar.bg-orange {
+    background: linear-gradient(to right, #A52A2A, #FF8C00);
+}
+
+a {
+    display: inline-block;
+    color: darkorange;
+    padding: 6px 10px;
+}
+
+a:hover {
+    background-color: darkorange;
+    color: #ffffff;
+    border: 1px solid #ff0000;
+    border-radius: 5px;
+}
+
+.btn {
+    color: darkorange;
+}
+
+    .btn:hover {
+        background-color: darkorange;
+        color: #ffffff;
+        border: 1px solid #ff0000;
+        border-radius: 5px;
+    }

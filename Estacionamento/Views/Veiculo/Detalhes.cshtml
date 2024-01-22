@@ -4,36 +4,56 @@
     ViewData["Title"] = "Detalhes dos veículos.";
 }
 
-<h2 style="font-style: italic; text-decoration: underline; color: #4F4F4F">Detalhes do veículo</h2>
+<h2 style="font-style: italic; text-decoration: none; color: orangered">Detalhes do veículo</h2>
+<br />
 
 <div>
     <dl class="row">
-        <dt class="col-sm-2" style="font-family:sans-serif;color:#4F4F4F">
+        <dt class="col-sm-2" style="font-family:sans-serif;color:#FF4500">
             @Html.DisplayNameFor(x => x.Modelo)
         </dt>
-        <dt class="col-sm-10" style="font-family:serif;color:#808080">
+        <dt class="col-sm-10" style="font-family:serif">
             @Html.DisplayFor(x => x.Modelo)
         </dt>
-        <dt class="col-sm-2" style="font-family:sans-serif;color:#4F4F4F">
+        <dt class="col-sm-2" style="font-family:sans-serif;color:#FF4500">
             @Html.DisplayNameFor(x => x.Placa)
         </dt>
-        <dt class="col-sm-10" style="font-family:serif;color:#808080">
+        <dt class="col-sm-10" style="font-family:serif">
             @Html.DisplayFor(x => x.Placa)
         </dt>
-        <dt class="col-sm-2" style="font-family:sans-serif;color:#4F4F4F">
+        <dt class="col-sm-2" style="font-family:sans-serif;color:#FF4500">
             @Html.DisplayNameFor(x => x.PrecoInicial)
         </dt>
-        <dt class="col-sm-10" style="font-family:serif;color:#808080">
+        <dt class="col-sm-10" style="font-family:serif">
             @Html.DisplayFor(x => x.PrecoInicial)
         </dt>
-        <dt class="col-sm-2" style="font-family:sans-serif;color:#4F4F4F">
+        <dt class="col-sm-2" style="font-family:sans-serif;color:#FF4500">
             @Html.DisplayNameFor(x => x.PrecoHora)
         </dt>
-        <dt class="col-sm-10" style="font-family:serif;color:#808080">
+        <dt class="col-sm-10" style="font-family:serif">
             @Html.DisplayFor(x => x.PrecoHora)
+        </dt>
+        <dt class="col-sm-2" style="font-family:sans-serif;color:#FF4500">
+            @Html.DisplayNameFor(x => x.Cor)
+        </dt>
+        <dt class="col-sm-10" style="font-family:serif">
+            @Html.DisplayFor(x => x.Cor)
+        </dt>
+        <dt class="col-sm-2" style="font-family:sans-serif;color:#FF4500">
+            @Html.DisplayNameFor(x => x.Marca)
+        </dt>
+        <dt class="col-sm-10" style="font-family:serif">
+            @Html.DisplayFor(x => x.Marca)
+        </dt>
+        <dt class="col-sm-2" style="font-family:sans-serif;color:#FF4500">
+            @Html.DisplayNameFor(x => x.Proprietario)
+        </dt>
+        <dt class="col-sm-10" style="font-family:serif">
+            @Html.DisplayFor(x => x.Proprietario)
         </dt>
     </dl>
 </div>
 
 <a asp-action="Editar" asp-route-id="@Model.Id">Editar</a> |
 <a asp-action="Index">Voltar</a>
+
