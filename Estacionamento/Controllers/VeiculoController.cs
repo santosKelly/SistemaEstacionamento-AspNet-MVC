@@ -74,13 +74,13 @@ namespace Estacionamento.Controllers
 
                     if (veiculoBanco != null)
                     {
-                        veiculoBanco.Modelo = veiculo.Modelo;
-                        veiculoBanco.Placa = veiculo.Placa;
-                        veiculoBanco.PrecoInicial = veiculo.PrecoInicial;
-                        veiculoBanco.PrecoHora = veiculo.PrecoHora;
-                        veiculoBanco.Cor = veiculo.Cor;
-                        veiculoBanco.Marca = veiculo.Marca;
-                        veiculoBanco.Proprietario = veiculo.Proprietario;
+                        veiculoBanco.Modelo         = veiculo.Modelo;
+                        veiculoBanco.Placa          = veiculo.Placa;
+                        veiculoBanco.PrecoInicial   = veiculo.PrecoInicial;
+                        veiculoBanco.PrecoHora      = veiculo.PrecoHora;
+                        veiculoBanco.Cor            = veiculo.Cor;
+                        veiculoBanco.Marca          = veiculo.Marca;
+                        veiculoBanco.Proprietario   = veiculo.Proprietario;
 
                         _context.Veiculos.Update(veiculoBanco);
                         _context.SaveChanges();
@@ -139,7 +139,7 @@ namespace Estacionamento.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private decimal CalcularValorTotalHora(Veiculo veiculo, int horasEstacionado)
+        public decimal CalcularValorTotalHora(Veiculo veiculo, int horasEstacionado)
         {
             decimal valorTotal = (veiculo.PrecoHora * horasEstacionado) + veiculo.PrecoInicial ;
             return valorTotal;
