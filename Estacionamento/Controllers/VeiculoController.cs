@@ -115,7 +115,7 @@ namespace Estacionamento.Controllers
             var deletarVeiculo = _context.Veiculos.Find(id);
 
 
-            decimal totalHoras = CalcularValorTotalHora(deletarVeiculo, horasEstacionado);
+            decimal totalHoras = (deletarVeiculo.PrecoHora * horasEstacionado) + deletarVeiculo.PrecoInicial;
 
             TempData["MensagemRemocao"] = $"O total cobrado é de  : {totalHoras:C}, por {horasEstacionado} hora(s) estacionado";
             
@@ -139,10 +139,5 @@ namespace Estacionamento.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public decimal CalcularValorTotalHora(Veiculo veiculo, int horasEstacionado)
-        {
-            decimal valorTotal = (veiculo.PrecoHora * horasEstacionado) + veiculo.PrecoInicial ;
-            return valorTotal;
-        }
     }
 }
